@@ -7,6 +7,7 @@
  */
 
 import React,{useState} from 'react';
+import 'react-native-gesture-handler';
 import {
   SafeAreaView,
   StyleSheet,
@@ -16,49 +17,34 @@ import {
   StatusBar,
 } from 'react-native';
 import { Container, Header, Content, Form, Item, Input, Label,Button } from 'native-base'
-
-
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 function App(){
-const[country,setCountry]=useState("")
- 
-  function getCountryData(){
-    //GET request 
-    
-    fetch(`https://restcountries.eu/rest/v2/name/${country}`, {
-        method: 'GET'
-        //Request Type 
-    })
-    .then((response) => response.json())
-    //If response is in json then in success
-    .then((responseJson) => {
-        //Success 
-        alert(JSON.stringify(responseJson));
-        console.log(responseJson);
-    })
-    //If response is not in json then in error
-    .catch((error) => {
-        //Error 
-        alert(JSON.stringify(error));
-        console.error(error);
-    });
-  }
 
+  const Stack = createStackNavigator();
+  function HomeScreen({ navigation }) {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Home Screen</Text>
+        <Button
+          title="Go to Details"
+          onPress={() => navigation.navigate('Details')}
+        />
+      </View>
+    );
+  }
+  
+  function DetailsScreen() {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Details Screen</Text>
+      </View>
+    );
+  }
   return(
-    <Container>
-        <Header />
-        <Content>
-          <Form>
-            <Item floatingLabel>
-              <Label>Country Name</Label>
-              <Input onChangeText={val => setCountry(val)}/>
-            </Item>
-            <Button block style={{margin:15,padding:20}} onPress={()=>getCountryData()}>
-            <Text>Enter</Text>
-          </Button>
-          </Form>
-        </Content>
-      </Container>
+
+   <HomeScreen/>
   )
 }
 
