@@ -1,14 +1,32 @@
 import React from 'react'
 import {
   View,
-    Text,
+ FlatList
     
   } from 'react-native';
+  import { Container, Header, Content, List, ListItem, Thumbnail, Text, Left, Body, Right, Button } from 'native-base';
 
-function DetailsScreen(){
+
+function DetailsScreen({route,navigation}){
+    const { countryList } = route.params;
+  console.log("capital",countryList)
+  const renderItem = ({ item }) => {
+    if (item.capital) {
+      return (
+         <Text>{item.capital}</Text> 
+      )}
+  }
+
     return(
-        <View style={{flex:1}}>
-<Text> DetailsScreen</Text></View>
+        
+        
+        <FlatList
+        data={countryList}
+        renderItem={renderItem}
+        keyExtractor={item => item.name}
+       
+      />
+    
     )
 
 }

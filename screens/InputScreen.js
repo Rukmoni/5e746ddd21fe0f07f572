@@ -10,7 +10,7 @@ import {
   import { Container, Header, Content, Form, Item, Input, Label,Button } from 'native-base'
 
   
-  function InputScreen(){
+  function InputScreen({navigation}){
     const[country,setCountry]=useState("")
  
     async function getCountryData(){
@@ -24,8 +24,11 @@ import {
         //If response is in json then in success
         .then((responseJson) => {
             //Success 
-            alert(JSON.stringify(responseJson));
-            console.log(responseJson);
+            alert(JSON.stringify(responseJson[0].capital));
+            navigation.navigate('Details',{
+              countryList: responseJson
+            });
+           // console.log(responseJson);
         })
         //If response is not in json then in error
         .catch((error) => {
