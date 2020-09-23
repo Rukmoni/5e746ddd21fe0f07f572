@@ -21,7 +21,11 @@ function DetailsScreen({route,navigation}){
     //If response is in json then in success
     .then((responseJson) => {
         //Success 
-        alert(JSON.stringify(responseJson));
+        //alert(JSON.stringify(responseJson));
+        console.log(responseJson)
+        navigation.navigate('Weather',{
+            weather: responseJson
+          });
        
        // console.log(responseJson);
     })

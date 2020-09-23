@@ -21,6 +21,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import InputScreen from './screens/InputScreen';
 import DetailsScreen from './screens/DetailsScreen';
+import WeatherScreen from './screens/WeatherScreen';
 
 function App(){
 
@@ -34,6 +35,7 @@ function App(){
     <Stack.Navigator initialRouteName="Home">
       <Stack.Screen name="Home" component={InputScreen} />
       <Stack.Screen name="Details" component={DetailsScreen} />
+      <Stack.Screen name="Weather" component={WeatherScreen} />
     </Stack.Navigator>
   </NavigationContainer>
   )
