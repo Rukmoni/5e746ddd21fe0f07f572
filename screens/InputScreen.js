@@ -24,7 +24,7 @@ import {
         //If response is in json then in success
         .then((responseJson) => {
             //Success 
-            alert(JSON.stringify(responseJson[0].capital));
+          
             navigation.navigate('Details',{
               countryList: responseJson
             });
