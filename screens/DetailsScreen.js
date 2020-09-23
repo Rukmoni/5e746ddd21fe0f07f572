@@ -2,7 +2,8 @@ import React from 'react'
 import {
   View,
  FlatList,
- TouchableOpacity
+ TouchableOpacity,
+ Image
     
   } from 'react-native';
   import { Container, Header, Content, List, ListItem, Thumbnail, Text, Left, Body, Right, Button } from 'native-base';
@@ -41,6 +42,10 @@ function DetailsScreen({route,navigation}){
     if (item.capital) {
       return (
           <TouchableOpacity onPress={()=>getWeatherData(item.capital)}>
+          <Image
+        style={{width:40,height:40}}
+        source={{uri:'https://restcountries.eu/data/vir.svg'}}
+      />
          <Text>{item.capital}</Text> 
          <Text>{item.population}</Text>
          <Text>{item.latlng}</Text>
